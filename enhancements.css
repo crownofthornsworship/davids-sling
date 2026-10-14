@@ -1,0 +1,4 @@
+#aimBtn{font-size:1rem;transition:background .18s,border-color .18s,color .18s}
+#aimBtn[aria-pressed="true"]{background:#e8bd6a;color:#18362f;border-color:#f7d998;box-shadow:0 0 0 2px #e8bd6a24}
+#aimBtn:focus-visible{outline:3px solid #f3d18d;outline-offset:2px}
+@media(max-width:430px){.header-actions{gap:6px}.header-actions .icon{width:36px;height:36px}}
