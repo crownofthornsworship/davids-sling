@@ -58,7 +58,7 @@
             ><strong>DAVID’S SLING</strong></span
           >
         </div>
-        <div class="header-actions">
+        <div class="header-actions"><label class="difficulty-picker">Difficulty <select id="difficulty"><option value="easy">Easy</option><option value="normal">Normal</option></select></label>
           <button
             id="soundBtn"
             class="icon"
@@ -159,7 +159,7 @@
       </main>
       <dialog id="help">
         <div class="dialog-body">
-          <button id="closeHelp" class="close" aria-label="Close">×</button
+          <button id="closeHelp" class="close" aria-label="Skip tutorial">Skip</button
           ><span class="overline">HOW TO PLAY</span>
           <h2>Find your aim.</h2>
           <p>
@@ -174,11 +174,11 @@
             have five throws per challenge. After a miss, the optional guide
             shows your previous flight path—adjust your pull and try again.
           </p>
-          <button class="primary" id="playBtn">Let’s play</button>
+          <button class="primary" id="playBtn">Practice the first shot</button>
         </div>
       </dialog>
     </div>
-    <script src="./game.js?v=2"></script>
+    <style>.difficulty-picker{display:flex;align-items:center;gap:6px;font:800 12px system-ui;color:inherit}.difficulty-picker select{min-height:40px;border-radius:9px;padding:0 8px;background:#102d38;color:#fff;border:1px solid #ffffff55}@media(max-width:620px){.difficulty-picker{font-size:0}.difficulty-picker:before{content:"MODE";font-size:10px}}</style><script src="./game.js?v=3"></script>
     <footer style="text-align: center; padding: 12px; font: 14px system-ui">
       <a
         style="color: inherit"
