@@ -10,7 +10,7 @@
     <title>David's Sling · Courage in the Valley</title>
     <meta
       name="description"
-      content="Take five smooth stones into 99 precision challenges, learn from every throw, and face David’s final courage trial."
+      content="Master 99 precision challenges, then face Goliath in a new 99-level first-person dodge-and-sling campaign."
     />
     <link
       rel="icon"
@@ -77,6 +77,11 @@
         </div>
       </header>
       <main>
+        <nav class="mode-switcher" aria-label="Game mode">
+          <button class="mode-tab active" id="classicModeBtn" aria-pressed="true"><span>🎯</span><b>Sling Challenges</b><small>99 precision trials</small></button>
+          <button class="mode-tab mode-tab-new" id="davidModeBtn" aria-pressed="false"><span>⚔️</span><b>David Mode</b><small>NEW · 99 first-person battles</small></button>
+        </nav>
+        <div id="classicMode">
         <section class="game-heading">
           <div>
             <span class="overline">1 SAMUEL 17 · A GAME OF COURAGE</span>
@@ -156,6 +161,23 @@
             <div id="levelButtons" class="level-buttons"></div>
           </div>
         </section>
+        </div>
+        <section id="davidMode" class="david-mode" hidden aria-label="David Mode first-person campaign">
+          <div class="david-mode-heading">
+            <div><span class="overline">FIRST-PERSON COURAGE CAMPAIGN</span><h1>Face the giant.</h1><p>Dodge the spear. Stand your ground. Let the stone fly.</p></div>
+            <div class="david-progress"><span id="dmLevelLabel">LEVEL 01 / 99</span><strong id="dmProgressLabel">0 cleared</strong></div>
+          </div>
+          <div class="dm-stage" id="dmStage">
+            <canvas id="davidCanvas" width="900" height="600" aria-label="First-person battle against Goliath"></canvas>
+            <div class="dm-hud" aria-live="polite"><div><small>DAVID</small><strong id="dmHearts">♥ ♥ ♥ ♥ ♥</strong></div><div class="dm-objective"><small id="dmWave">VALLEY APPROACH</small><strong id="dmMessage">Watch Goliath's spear!</strong></div><div><small>GOLIATH</small><strong id="dmBossHealth">● ● ●</strong></div></div>
+            <div class="dm-warning" id="dmWarning" hidden><span id="dmWarningIcon">↔</span><b id="dmWarningText">DODGE!</b></div>
+            <div class="dm-overlay" id="dmOverlay"><div class="dm-card"><span class="overline">NEW GAME MODE</span><h2>David Mode</h2><p>Goliath is hurling spears. Read each warning, dodge at the right moment, and press <b>THROW</b> to sling a stone back at him.</p><div class="dm-lessons"><span>← →<small>Dodge lanes</small></span><span>↑<small>Jump low spears</small></span><span>↓<small>Dive-roll high spears</small></span><span>◉<small>Throw stone</small></span></div><p class="dm-faith">“The battle is the LORD’s.” — 1 Samuel 17:47</p><button class="primary" id="dmStartBtn">Begin training</button><button class="dm-text-button" id="dmSkipBtn">Skip training · Start level 1</button></div></div>
+          </div>
+          <div class="dm-controls" aria-label="David Mode controls"><button data-dm-action="left" aria-label="Dodge left">←<small>LEFT</small></button><button data-dm-action="right" aria-label="Dodge right">→<small>RIGHT</small></button><button data-dm-action="jump" aria-label="Jump">↑<small>JUMP</small></button><button data-dm-action="roll" aria-label="Dive and roll">↘<small>ROLL</small></button><button data-dm-action="throw" class="dm-throw" aria-label="Throw stone">◉<small>THROW</small></button></div>
+          <div class="dm-actions"><button id="dmReplayHelp" class="outline">? Learn to play</button><button id="dmRetry" class="outline">↻ Retry</button><button id="dmLevels" class="outline">☰ Levels</button></div>
+          <div id="dmLevelGrid" class="dm-level-grid" hidden></div>
+          <div class="dm-story"><span class="overline">COURAGE, SKILL, AND FAITH</span><p id="dmVerse">David did not trust in armor or size. He trusted the living God and gave Him the glory.</p></div>
+        </section>
       </main>
       <dialog id="help">
         <div class="dialog-body">
@@ -178,6 +200,7 @@
         </div>
       </dialog>
     </div>
+    <script src="./david-mode.js?v=1"></script>
     <style>.difficulty-picker{display:flex;align-items:center;gap:6px;font:800 12px system-ui;color:inherit}.difficulty-picker select{min-height:40px;border-radius:9px;padding:0 8px;background:#102d38;color:#fff;border:1px solid #ffffff55}@media(max-width:620px){.difficulty-picker{font-size:0}.difficulty-picker:before{content:"MODE";font-size:10px}}</style><script src="./game.js?v=3"></script>
     <footer style="text-align: center; padding: 12px; font: 14px system-ui">
       <a
