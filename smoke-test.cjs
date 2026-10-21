@@ -1,0 +1,20 @@
+const fs=require('fs');
+const assert=require('assert');
+const html=fs.readFileSync('index.html','utf8');
+const js=fs.readFileSync('david-mode.js','utf8');
+const css=fs.readFileSync('style.css','utf8');
+
+assert(html.includes('id="classicMode"'),'classic campaign must remain');
+assert(html.includes('id="davidMode"'),'David Mode must exist');
+assert(html.includes('99 first-person battles'),'mode picker must advertise 99 battles');
+assert.equal((html.match(/data-dm-action=/g)||[]).length,5,'five touch controls are required');
+assert(js.includes("Array.from({length:99}"),'David Mode must create 99 level buttons');
+assert(js.includes("davids-sling-david-mode-v1"),'David Mode progress needs an independent save key');
+for(const action of ['left','right','jump','roll','throw']) assert(js.includes(`'${action}'`),`${action} action missing`);
+for(const input of ['arrowleft','arrowright','arrowup','arrowdown']) assert(js.includes(input),`${input} keyboard input missing`);
+assert(js.includes("readDifficulty()==='easy'"),'Easy balancing missing');
+assert(js.includes("save.unlocked"),'persistent unlock progression missing');
+assert(css.includes('@media(max-width:700px)'),'mobile layout missing');
+assert(css.includes('env(safe-area-inset-bottom)'),'mobile safe area support missing');
+new Function(js);
+console.log('David Mode smoke checks passed: 99 levels, 5 actions, saves, difficulty, keyboard, mobile.');
